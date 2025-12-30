@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* Dark overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* Main box */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 340px;
+  margin: 60px auto;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #00ffcc;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00ccaa;
+}
+
+.wish {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ffeb3b;
+}
+
+/* Offer box */
+.offer {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.15);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Fireflies */
+.firefly {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: move 8s linear infinite;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(-300px);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- Fireflies -->
+<script>
+for(let i=0;i<30;i++){
+  let f=document.createElement("div");
+  f.className="firefly";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top=Math.random()*100+"vh";
+  f.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(f);
+}
+</script>
+
+<div class="container">
+  <h2>🎉 Happy New Year 2026 🎉</h2>
+
+  <input id="toName" placeholder="Jisko wish bhejni hai uska naam">
+  <input id="fromName" placeholder="Aapka naam">
+
+  <button onclick="makeWish()">Wish & Share</button>
+
+  <div class="wish" id="wishBox"></div>
+
+  <div class="offer">
+    💰 <b>₹100 Paane ka Mauka!</b><br>
+    Is website ko WhatsApp par <b>10 doston</b> ko share karo<br>
+    aur ₹100 jeeto!<br><br>
+    <button onclick="shareOnly()">10 logon ko bhejo</button>
+  </div>
+</div>
+
+<script>
+function makeWish(){
+  let to = document.getElementById("toName").value;
+  let from = document.getElementById("fromName").value;
+
+  let msg = "🎉 Happy New Year 2026 🎉";
+  if(to && from){
+    msg = "🎉 Happy New Year 2026 🎉\n\nDear "+to+
+          ",\nYe naya saal aapke liye khushiyan laaye.\n\n– "+from;
+  }
+
+  document.getElementById("wishBox").innerText = msg;
+
+  let url = location.href;
+  let shareText = encodeURIComponent(msg + "\n\nDekho 👉 " + url);
+  window.open("https://wa.me/?text="+shareText, "_blank");
+
+  if(to || from){
+    setTimeout(()=>location.reload(),15000);
+  }
+}
+
+function shareOnly(){
+  let text = encodeURIComponent(
+    "🎉 Happy New Year 2026 🎉\nPersonal wish banane ke liye link kholen:\n"+location.href
+  );
+  window.open("https://wa.me/?text="+text,"_blank");
+}
+</script>
+
+</body>
+</html>
