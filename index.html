@@ -2,170 +2,181 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
+<title>Happy New Year 2026 🎉</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy New Year 2026</title>
 
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+*{box-sizing:border-box;}
+body{
+  margin:0;
   font-family: Arial, sans-serif;
+  min-height:100vh;
+  background: linear-gradient(135deg,#ff512f,#dd2476);
+  overflow-x:hidden;
 }
 
-body {
-  background: url('bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  overflow: hidden;
+/* Background Animation */
+.festival-bg span{
+  position:fixed;
+  bottom:-60px;
+  font-size:24px;
+  animation: floatUp linear infinite;
+  opacity:0.9;
+  z-index:0;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
 }
 
-/* Dark overlay */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 1;
+/* Layout */
+.container{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  padding:25px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* Main box */
-.container {
-  position: relative;
-  z-index: 2;
-  max-width: 340px;
-  margin: 60px auto;
-  background: rgba(0,0,0,0.6);
-  padding: 20px;
-  border-radius: 12px;
-  color: #fff;
-  text-align: center;
+.card{
+  width:100%;
+  max-width:420px;
+  text-align:center;
+  padding:25px;
+  border-radius:18px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  color:#fff;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: none;
-  font-size: 16px;
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  font-size:16px;
+  border-radius:10px;
+  border:none;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 6px;
-  background: #00ffcc;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
+button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-button:hover {
-  background: #00ccaa;
+.whatsapp{background:#25D366;color:#fff;}
+
+.offer{
+  background: rgba(255,255,255,0.2);
+  margin-top:15px;
+  padding:15px;
+  border-radius:12px;
+  font-size:14px;
 }
 
-.wish {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #ffeb3b;
-}
+.counter{margin-top:10px;font-size:13px;}
 
-/* Offer box */
-.offer {
-  margin-top: 20px;
-  background: rgba(255,255,255,0.15);
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-/* Fireflies */
-.firefly {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: move 8s linear infinite;
-}
-
-@keyframes move {
-  from {
-    transform: translateY(0);
-    opacity: 0.2;
-  }
-  to {
-    transform: translateY(-300px);
-    opacity: 1;
-  }
-}
+#wishBox{display:none;}
 </style>
 </head>
 
 <body>
 
-<div class="overlay"></div>
+<!-- Floating Emojis -->
+<div class="festival-bg">
+  <span style="left:10%;animation-duration:12s">🎆</span>
+  <span style="left:30%;animation-duration:14s">🎉</span>
+  <span style="left:50%;animation-duration:10s">2026</span>
+  <span style="left:70%;animation-duration:13s">🎊</span>
+  <span style="left:90%;animation-duration:11s">✨</span>
+</div>
 
-<!-- Fireflies -->
-<script>
-for(let i=0;i<30;i++){
-  let f=document.createElement("div");
-  f.className="firefly";
-  f.style.left=Math.random()*100+"vw";
-  f.style.top=Math.random()*100+"vh";
-  f.style.animationDuration=(5+Math.random()*5)+"s";
-  document.body.appendChild(f);
-}
-</script>
+<!-- FORM PAGE -->
+<div class="container" id="formBox">
+  <div class="card">
+    <h2>🎊 Happy New Year 2026 🎊</h2>
 
-<div class="container">
-  <h2>🎉 Happy New Year 2026 🎉</h2>
+    <input type="text" id="toName" placeholder="Jise wish karni hai (optional)">
+    <input type="text" id="fromName" placeholder="Aapka naam (optional)">
 
-  <input id="toName" placeholder="Jisko wish bhejni hai uska naam">
-  <input id="fromName" placeholder="Aapka naam">
+    <button class="whatsapp" onclick="shareWish()">
+      📱 WhatsApp par Share kare
+    </button>
 
-  <button onclick="makeWish()">Wish & Share</button>
+    <div class="offer">
+      🎁 Is wish ko 10 doston ko bhejo aur pao ₹100 ka chance
+    </div>
 
-  <div class="wish" id="wishBox"></div>
+    <div class="counter">🔥 1,500+ log already share kar chuke</div>
+  </div>
+</div>
 
-  <div class="offer">
-    💰 <b>₹100 Paane ka Mauka!</b><br>
-    Is website ko WhatsApp par <b>10 doston</b> ko share karo<br>
-    aur ₹100 jeeto!<br><br>
-    <button onclick="shareOnly()">10 logon ko bhejo</button>
+<!-- WISH PAGE -->
+<div class="container" id="wishBox">
+  <div class="card">
+    <h2 id="wishText"></h2>
+    <p id="countdown"></p>
   </div>
 </div>
 
 <script>
-function makeWish(){
-  let to = document.getElementById("toName").value;
-  let from = document.getElementById("fromName").value;
+const p = new URLSearchParams(location.search);
+const to = p.get("to");
+const from = p.get("from");
 
-  let msg = "🎉 Happy New Year 2026 🎉";
-  if(to && from){
-    msg = "🎉 Happy New Year 2026 🎉\n\nDear "+to+
-          ",\nYe naya saal aapke liye khushiyan laaye.\n\n– "+from;
-  }
+if(to && from){
+  document.getElementById("formBox").style.display="none";
+  document.getElementById("wishBox").style.display="flex";
 
-  document.getElementById("wishBox").innerText = msg;
+  document.getElementById("wishText").innerHTML =
+    "✨ Dear <b>"+to+"</b><br>" +
+    "May 2026 bring happiness, success & love 💖<br><br>" +
+    "🎉 Happy New Year 2026 🎉<br><br>" +
+    "— "+from;
 
-  let url = location.href;
-  let shareText = encodeURIComponent(msg + "\n\nDekho 👉 " + url);
-  window.open("https://wa.me/?text="+shareText, "_blank");
-
-  if(to || from){
-    setTimeout(()=>location.reload(),15000);
-  }
+  let s=15;
+  let t=setInterval(()=>{
+    document.getElementById("countdown").innerText =
+      "⏳ Page "+s+" second mein reset ho jayega";
+    s--;
+    if(s<0){
+      clearInterval(t);
+      location.href=location.pathname;
+    }
+  },1000);
 }
 
-function shareOnly(){
-  let text = encodeURIComponent(
-    "🎉 Happy New Year 2026 🎉\nPersonal wish banane ke liye link kholen:\n"+location.href
-  );
-  window.open("https://wa.me/?text="+text,"_blank");
+function shareWish(){
+  let toN = toName.value.trim();
+  let fromN = fromName.value.trim();
+
+  let link;
+  let msg;
+
+  if(toN && fromN){
+    // Personal wish
+    link = location.origin + location.pathname +
+      "?to="+encodeURIComponent(toN)+"&from="+encodeURIComponent(fromN);
+
+    msg = "✨ Dear "+toN+
+      "\nHappy New Year 2026 🎉"+
+      "\n— "+fromN+
+      "\n\nSpecial wish dekhiye 👇\n"+link;
+  }else{
+    // Simple site share
+    link = location.origin + location.pathname;
+
+    msg = "🎉 Happy New Year 2026 🎉\n" +
+      "Ek special New Year site dekho 👇\n" + link;
+  }
+
+  location.href = "https://wa.me/?text=" + encodeURIComponent(msg);
 }
 </script>
 
